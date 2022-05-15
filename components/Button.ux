@@ -1,0 +1,13 @@
+<DockPanel ux:Class="MainButton" Width="80" Height="35" Padding="10">
+	<string ux:Property="Label" />
+	<FileSource ux:Property="IconFile" />
+
+	<Rectangle Layer="Background" StrokeWidth="2" StrokeColor="White" CornerRadius="10" Color="#fff4" />
+	<Instance Item="{ReadProperty this.IconFile}">
+		<Image ux:Template="Icon" Dock="Left" File="{ReadProperty this.IconFile}" Size="18" Alignment="CenterLeft" />
+	</Instance>
+	<Text Value="{ReadProperty this.Label}" Color="White" Alignment="Center" Font="MontserratBold" FontSize="13" />
+	<WhilePressed>
+		<Scale Factor=".95" Duration="0.2" />
+	</WhilePressed>
+</DockPanel>

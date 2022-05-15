@@ -1,0 +1,17 @@
+<Panel ux:Class="SizePickerButton" HitTestMode="LocalBounds">
+	<string ux:Property="Label" />
+	<string ux:Property="Value" />
+
+	<Selectable Value="{Property this.Value}" />
+
+	<Rectangle ux:Name="bg" Layer="Background" StrokeColor="White" StrokeWidth="1" />
+	<Text Font="MontserratBold" Value="{Property this.Label}" Color="White" FontSize="12" Alignment="Center"  />
+
+	<Tapped>
+		<ToggleSelection />
+		<Callback Handler="{tileSizeChanged}" />
+	</Tapped>
+	<WhileSelected>
+		<Change bg.Color="#fff4" Duration="0.2" Easing="CubicInOut" />
+	</WhileSelected>
+</Panel>

@@ -1,0 +1,25 @@
+<Panel ux:Class="ScoreItem" MinHeight="35">
+    <string ux:Property="PuzzleSize" />
+    <string ux:Property="Time" />
+    <string ux:Property="MovesCount" />
+
+    <Rectangle Alignment="Bottom" Height="1" Color="White" />
+    <Panel Padding="10">
+        <Match String="{ReadProperty this.PuzzleSize}">
+        <Case String="3">
+            <Text Alignment="CenterLeft" Font="Montserrat" Value="3x3" Color="White" />
+        </Case>
+        <Case String="4">
+            <Text Alignment="CenterLeft" Font="Montserrat" Value="4x4" Color="White" />
+        </Case>
+        <Case String="5">
+            <Text Alignment="CenterLeft" Font="Montserrat" Value="5x5" Color="White" />
+        </Case>
+        <Case String="6">
+            <Text Alignment="CenterLeft" Font="Montserrat" Value="6x6" Color="White" />
+        </Case>
+    </Match>
+    <Text Alignment="Center" Font="Montserrat" Value="{ReadProperty this.Time}" Color="White" />
+    <Text Alignment="CenterRight" Font="Montserrat" Value="{ReadProperty this.MovesCount} Moves"  Color="White" />
+    </Panel>
+</Panel>

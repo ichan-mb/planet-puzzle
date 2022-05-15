@@ -1,0 +1,39 @@
+<Panel ux:Class="Tile" HitTestMode="LocalBounds" Opacity="1">
+	<string ux:Property="Value" />
+	<bool ux:Property="IsWhitespace" />
+	<bool ux:Property="IsAtCorrectLocation" />
+	<bool ux:Property="IsPulsating" />
+
+	<LetFloat ux:Name="fontFactor" Value="height(this) / 60" />
+	<Scaling ux:Name="scaling" Factor="1" />
+
+	<Rectangle ux:Name="decor" Layer="Background" StrokeWidth="2" StrokeColor="#fff7" CornerRadius="5" />
+	<Text ux:Name="numberText" Font="PaytoneOne" FontSize="30 * {fontFactor}" Color="White" Value="{ReadProperty this.Value}" Alignment="Center" />
+
+	<LayoutAnimation Bypass="Never">
+		<Move RelativeTo="PositionChange" Vector="1" Duration="0.15" Easing="CubicInOut" Delay="0" DelayBack="0" />
+	</LayoutAnimation>
+
+	<WhileTrue Value="{Property this.IsWhitespace}">
+		<Change decor.StrokeWidth="0" />
+		<Change decor.StrokeColor="#0000" />
+		<Change decor.CornerRadius="0" />
+		<Change numberText.Visibility="Collapsed" />
+	</WhileTrue>
+	<WhileTrue Value="{{Property this.IsAtCorrectLocation}} && {!Property this.IsWhitespace}">
+		<Change decor.Color="#fff4" Duration="0.2" />
+		<Change decor.StrokeColor="#fff" Duration="0.2" />
+	</WhileTrue>
+	<WhileTrue Value="{Property this.IsPulsating}">
+		<Cycle Target="scaling.Factor" Low="0.98" High="1.02" Frequency="1.2" />
+	</WhileTrue>
+
+	<RemovingAnimation>
+		<Change this.Opacity="0" Duration="0.5" />
+	</RemovingAnimation>
+
+	<AddingAnimation>
+		<Change this.Opacity="0" Duration="0.5" />
+	</AddingAnimation>
+
+</Panel>

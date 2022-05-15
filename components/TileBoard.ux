@@ -1,0 +1,7 @@
+<Grid ux:Class="TileBoard" CellSpacing="8" Opacity="0">
+	<Scaling ux:Name="scalingBoard" Factor="0.4" />
+	<WhileActive>
+		<Change this.Opacity="1" Duration=".5" Delay="1" />
+		<Change scalingBoard.Factor="1" Duration="1" Easing="ElasticOut" Delay="1" />
+	</WhileActive>
+</Grid>

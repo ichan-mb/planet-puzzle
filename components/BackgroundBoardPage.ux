@@ -1,0 +1,31 @@
+<Rectangle ux:Class="BoardBageBackground" Layer="Background">
+    <Image ux:Name="tlBg" Alignment="TopLeft" Size="144,142" X="-120" Y="-140" Opacity="0.8" MemoryPolicy="QuickUnload">
+		<FileImageSource File="../assets/images/background/topLeftPlanet.png" TargetSize="144,142" />
+	</Image>
+	<Image ux:Name="trBg" Alignment="TopRight" Size="356,241" X="280" Y="-120" Opacity="0.7" MemoryPolicy="QuickUnload">
+		<FileImageSource File="../assets/images/background/topRightPlanet.png" TargetSize="356,241" />
+	</Image>
+	<Image  Alignment="TopRight" Size="63,63" X="-120" Y="80" MemoryPolicy="QuickUnload">
+		<Scaling ux:Name="tBg" Factor="0" />
+		<FileImageSource File="../assets/images/background/topBgPlanet.png" TargetSize="63,63" />
+	</Image>
+	<Image ux:Name="blBg" Alignment="BottomLeft" Size="276,196" X="-260" MemoryPolicy="QuickUnload">
+		<FileImageSource File="../assets/images/background/bottomLeftPlanet.png" TargetSize="276,196" />
+	</Image>
+	<Image ux:Name="brBg" Alignment="BottomRight" Size="275,216" X="300" Y="200" MemoryPolicy="QuickUnload">
+		<FileImageSource File="../assets/images/background/bottomRightPlanet.png" TargetSize="275,216" />
+	</Image>
+	<Image Alignment="BottomRight" Size="112,104" X="-20" Y="-80" MemoryPolicy="QuickUnload">
+		<Scaling ux:Name="bBg" Factor="0" />
+		<FileImageSource File="../assets/images/background/bottomBgPlanet.png" TargetSize="112,104" />
+	</Image>
+
+    <WhileActive>
+		<Move Target="tlBg" X="60" Y="70" Duration="2" Easing="ElasticInOut" />
+		<Move Target="trBg" X="-150" Y="60" Duration="2" Easing="ElasticInOut" Delay="0.2" />
+		<Change tBg.Factor="1" Duration="2" Easing="ElasticInOut" Delay="0.3" />
+		<Move Target="blBg" X="140" Duration="2" Easing="ElasticInOut" />
+		<Move Target="brBg" X="-150" Y="-100" Duration="2" Easing="ElasticInOut" Delay="0.2" />
+		<Change bBg.Factor="1" Duration="2" Easing="ElasticInOut" Delay="0.3" />
+	</WhileActive>
+</Rectangle>

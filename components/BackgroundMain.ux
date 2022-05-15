@@ -1,0 +1,34 @@
+<Rectangle ux:Class="MainBackground" Layer="Background">
+	<JavaScript>
+		let numOfStar = 400;
+		let stars = [];
+		for (let i = 0; i < numOfStar; i++)
+		{
+			stars.push({
+				size: Math.floor(Math.random() * 2) + 1,
+				position: {
+					x: Math.floor(Math.random() * 500) + 5,
+					y: Math.floor(Math.random() * 1200) + 5
+				}
+			})
+		}
+		module.exports = {stars}
+	</JavaScript>
+
+	<Rectangle ux:Name="Stars" Opacity="0">
+		<VectorLayer CachingMode="Always">
+			<Each Items="{stars}" Defer="Deferred" Reuse="Frame" >
+				<Circle ux:Name="star" Color="White" Opacity="0.5" Width="{size}" Height="{size}" X="{position.x}" Y="{position.y}"/>
+			</Each>
+		</VectorLayer>
+	</Rectangle>
+
+	<LinearGradient AngleDegrees="170">
+		<GradientStop Offset="0" Color="PrimaryColor" />
+		<GradientStop Offset="1" Color="PrimaryAccentColor" />
+	</LinearGradient>
+
+	<WhileVisible>
+		<Change Stars.Opacity="1" Duration="3" />
+	</WhileVisible>
+</Rectangle>

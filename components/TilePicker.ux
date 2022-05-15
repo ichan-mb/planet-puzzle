@@ -1,0 +1,10 @@
+<Grid ux:Class="TilePicker" RowCount="2" ColumnCount="4" Alignment="Right" Width="160" Height="40">
+	<string ux:Property="Selected" />
+
+	<Selection MinCount="1" MaxCount="1" Value="{Property this.Selected}" />
+	<Text Alignment="Center" Value="Tile Size:" FontSize="12" Color="White" Font="MontserratBold" ColumnSpan="4" />
+	<SizePickerButton Label="S" Value="3" />
+	<SizePickerButton Label="M" Value="4" />
+	<SizePickerButton Label="L" Value="5" />
+	<SizePickerButton Label="XL" Value="6" />
+</Grid>

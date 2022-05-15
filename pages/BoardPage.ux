@@ -1,0 +1,74 @@
+<Page ux:Class="BoardPage">
+	<BoardBageBackground />
+
+	<SuccessDialog TileSize="{n}" />
+
+	<DockPanel Margin="20">
+		<Panel ux:Name="spacerUp" Dock="Top" Height="17%">
+			<MainButton Alignment="Left" Width="40">
+				<Scaling ux:Name="BtnScoreScaling" Factor="1" />
+				<Image File="../assets/images/icons/scores.png" Size="24" />
+				<Clicked Handler="{gotoScorePage}" />
+			</MainButton>
+		</Panel>
+		<Panel ux:Name="spacerBottom" Dock="Bottom" Height="20%" />
+		<Grid ux:Name="container" Rows="auto,1*,auto" Columns="1*" CellSpacing="8">
+			<StackPanel ux:Name="Header">
+				<Text ux:Name="AppName" Value="PlanetPuzzle" Font="PaytoneOne" FontSize="22" Color="White" />
+				<Text ux:Name="Desc" Value="Solve This Slide Puzzle.." Font="Montserrat" FontSize="14" Color="White" />
+				<Grid ux:Name="Stats" ColumnCount="3" RowCount="1" Height="30">
+					<Text Value="{timer}" Font="MontserratBold" FontSize="14" Color="White" />
+					<WrapPanel>
+						<Text Value="Moves:" Font="Montserrat" FontSize="14" Color="White" Margin="0,0,5,0" />
+						<Text Value="{moveCount}" Font="MontserratBold" FontSize="14" Color="White" />
+					</WrapPanel>
+					<WrapPanel>
+						<Text Value="Correct Tiles: " Font="Montserrat" FontSize="14" Color="White" Margin="0,0,5,0"  />
+						<Text Value="{correctTilesCount}" Font="MontserratBold" FontSize="14" Color="White" />
+					</WrapPanel>
+				</Grid>
+			</StackPanel>
+			<TileBoard ux:Name="TileBoard" ColumnCount="{n}" RowCount="{n}" CellSpacing="8">
+				<Each Items="{tiles}" Reuse="Frame" Defer="Deferred" Identity="Key" IdentityKey="value" >
+					<Tile Row="{currentLocation.y}"
+						Column="{currentLocation.x}"
+						Value="{value}"
+						IsWhitespace="{tileIsWhiteSpace}"
+						IsAtCorrectLocation="{isAtCorrectLocation}"
+						IsPulsating="{isPulsating}">
+
+						<Clicked>
+							<Callback Handler="{tileTapped}" />
+						</Clicked>
+					</Tile>
+
+				</Each>
+			</TileBoard>
+			<Panel ux:Name="Footer" Margin="0,10,0,0" >
+				<MainButton IconFile="../assets/images/icons/reset.png" ux:Name="ResetButton" Label="Reset" Alignment="Left" HitTestMode="LocalBounds">
+					<Tapped Handler="{resetPuzzleSize}">
+						<Scale Target="TileBoard" Duration="1" Easing="ElasticOut" />
+					</Tapped>
+				</MainButton>
+				<TilePicker ux:Name="TilePicker" Selected="{n}" />
+			</Panel>
+		</Grid>
+	</DockPanel>
+
+	<WhileInactive>
+		<Move Target="AppName" X="-1" RelativeTo="ParentSize" Duration="0.7" Easing="BackIn" DelayBack="1" />
+		<Move Target="Desc" X="-1" RelativeTo="ParentSize" Duration="0.7" Easing="BackIn" DelayBack="1.1" />
+		<Move Target="Stats" X="-1.1" RelativeTo="ParentSize" Duration="0.7" Easing="BackIn" DelayBack="1.2" />
+		<Move Target="ResetButton" Y="10" RelativeTo="ParentSize" Duration="0.7" Easing="QuinticIn" DelayBack="1" />
+		<Move Target="TilePicker" Y="10" RelativeTo="ParentSize" Duration="0.7" Easing="QuinticIn" DelayBack="1.1" />
+		<Change BtnScoreScaling.Factor="0" Easing="ElasticInOut" Duration="0.7" DelayBack="1.5" />
+	</WhileInactive>
+
+	<WhileWindowSize GreaterThan="500,1">
+		<Change container.Columns="2*,3*" />
+		<Change container.Rows="1*,auto" />
+		<Change spacerBottom.Height="5%" />
+		<Change Footer.ColumnSpan="2" />
+		<Change ResetButton.Alignment="Center" />
+	</WhileWindowSize>
+</Page>

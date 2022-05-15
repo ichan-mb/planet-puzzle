@@ -1,0 +1,8 @@
+<Panel ux:Class="Resources">
+	<float4 ux:Global="PrimaryColor" ux:Value="#180026ff" />
+	<float4 ux:Global="PrimaryAccentColor" ux:Value="#3f218dff" />
+
+	<Font ux:Global="Montserrat" File="../assets/fonts/Montserrat/Montserrat-Regular.ttf" />
+	<Font ux:Global="MontserratBold" File="../assets/fonts/Montserrat/Montserrat-Bold.ttf" />
+	<Font ux:Global="PaytoneOne" File="../assets/fonts/PaytoneOne/PaytoneOne-Regular.ttf" />
+</Panel>

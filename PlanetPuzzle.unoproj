@@ -1,0 +1,14 @@
+{
+  "Packages": [
+    "Fuse",
+    "FuseJS",
+    "Fuse.Vibration",
+    "Fuse.Share"
+  ],
+  "Includes": [
+    "*"
+  ],
+  "iOS": {
+    "BundleIdentifier": "ic.dev.apps.number.puzzle"
+  }
+}

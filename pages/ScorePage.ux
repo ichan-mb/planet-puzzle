@@ -1,0 +1,19 @@
+<Page ux:Class="ScorePage">
+	<ClientPanel ux:Name="container" HitTestMode="LocalBoundsAndChildren">
+		<Panel ux:Name="HeaderPanel" Dock="Top" Height="56" Padding="10" HitTestMode="LocalBoundsAndChildren">
+			<Panel HitTestMode="LocalBounds" >
+				<Image Size="24" File="../assets/images/icons/back.png" Alignment="CenterLeft" />
+				<Clicked Handler="{goBack}" />
+			</Panel>
+			<Text Value="My Scores" FontSize="24" Color="White" Font="MontserratBold" Alignment="Center" />
+		</Panel>
+		<Rectangle Color="White" Height="2" Dock="Top" />
+		<ScrollView>
+			<StackPanel>
+				<Each Items="{scores}">
+					<ScoreItem PuzzleSize="{puzzleSize}" Time="{time}" MovesCount="{movesCount}" />
+				</Each>
+			</StackPanel>
+		</ScrollView>
+	</ClientPanel>
+</Page>

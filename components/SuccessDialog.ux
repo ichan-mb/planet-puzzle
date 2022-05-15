@@ -1,0 +1,59 @@
+<Panel ux:Class="SuccessDialog" Opacity="0" HitTestMode="None">
+	<string ux:Property="TileSize" />
+
+	<MemoryPolicy ux:Global="AggresivePolicy" AllowPinnedFree="true" UnloadInBackground="true" UnpinInvisible="true" UnusedTimeout="1.0" />
+
+	<Rectangle Layer="Background" Color="#000c" />
+	<DockPanel ux:Name="dialogContent" Height="65%" Alignment="Center" Padding="15" Margin="20" Opacity="0" Color="PrimaryColor">
+		<Rectangle StrokeWidth="2" StrokeColor="White" CornerRadius="10" Layer="Background" />
+		<Scaling ux:Name="dialogContentScaling" Factor="0.4" />
+		<Match String="{Property this.TileSize}">
+			<Case String="3">
+				<Image StretchMode="Fill" MemoryPolicy="AggresivePolicy">
+					<FileImageSource File="../assets/images/puzzle-solved/solved-3x3.png" TargetSize="600,400" />
+				</Image>
+			</Case>
+			<Case String="4">
+				<Image StretchMode="Fill" MemoryPolicy="AggresivePolicy">
+					<FileImageSource File="../assets/images/puzzle-solved/solved-4x4.png" TargetSize="600,400" />
+				</Image>
+			</Case>
+			<Case String="5">
+				<Image StretchMode="Fill" MemoryPolicy="AggresivePolicy">
+					<FileImageSource File="../assets/images/puzzle-solved/solved-5x5.png" TargetSize="600,400" />
+				</Image>
+			</Case>
+			<Case String="6">
+				<Image StretchMode="Fill" MemoryPolicy="AggresivePolicy">
+					<FileImageSource File="../assets/images/puzzle-solved/solved-6x6.png" TargetSize="600,400" />
+				</Image>
+			</Case>
+		</Match>
+		<Grid Columns="1*" Rows="auto,auto,1*" Dock="Bottom" Height="170" Margin="0,10,0,0" CellSpacing="5">
+			<Text Value="Congrats! You did it!" Color="White" Font="PaytoneOne" FontSize="22" />
+			<Text Value="You solved the puzzle! Share your score to challenge your friends" Color="White" Font="Montserrat" FontSize="14" TextWrapping="Wrap" />
+			<Grid ColumnCount="2" RowCount="2" Height="100" Margin="0,0,0,12">
+				<Text Value="{timer}" Font="MontserratBold" Color="White" FontSize="18" Alignment="Center" />
+				<Text Value="{moveCount} Moves" Font="MontserratBold" Color="White" FontSize="18" Alignment="Center" />
+				<MainButton Label="Restart" IconFile="../assets/images/icons/reset.png" Width="100">
+					<Tapped>
+						<Callback Handler="{resetPuzzleSize}" />
+						<Toggle Target="toggle" />
+					</Tapped>
+				</MainButton>
+
+				<MainButton Label="Share" IconFile="../assets/images/icons/share.png" Width="100">
+					<Tapped Handler="{shareResult}" />
+				</MainButton>
+			</Grid>
+		</Grid>
+
+	</DockPanel>
+
+	<WhileTrue ux:Name="toggle" Value="{puzzle.isSolved}">
+		<Change this.Opacity="1" Duration="0.2" Easing="QuinticIn" />
+		<Change dialogContent.Opacity="1" Duration="0.5" Delay="0.2" DurationBack="0.2" />
+		<Change dialogContentScaling.Factor="1" Duration="0.7" Delay="0.2" Easing="ElasticOut" EasingBack="QuinticOut" DurationBack="0.2" />
+		<Change this.HitTestMode="LocalBoundsAndChildren" />
+	</WhileTrue>
+</Panel>

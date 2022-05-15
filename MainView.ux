@@ -1,0 +1,8 @@
+<App Model="App">
+	<Router ux:Name="router" />
+	<MainBackground />
+	<Navigator Pages="{pages}">
+		<BoardPage ux:Template="BoardPage" />
+		<ScorePage ux:Template="ScorePage" />
+	</Navigator>
+</App>
