@@ -1,5 +1,5 @@
 <Rectangle ux:Class="BoardBageBackground" Layer="Background">
-    <Image ux:Name="tlBg" Alignment="TopLeft" Size="144,142" X="-120" Y="-140" Opacity="0.8" MemoryPolicy="QuickUnload">
+	<Image ux:Name="tlBg" Alignment="TopLeft" Size="144,142" X="-120" Y="-140" Opacity="0.8" MemoryPolicy="QuickUnload">
 		<FileImageSource File="../assets/images/background/topLeftPlanet.png" TargetSize="144,142" />
 	</Image>
 	<Image ux:Name="trBg" Alignment="TopRight" Size="356,241" X="280" Y="-120" Opacity="0.7" MemoryPolicy="QuickUnload">
@@ -20,7 +20,7 @@
 		<FileImageSource File="../assets/images/background/bottomBgPlanet.png" TargetSize="112,104" />
 	</Image>
 
-    <WhileActive>
+	<WhileActive>
 		<Move Target="tlBg" X="60" Y="70" Duration="2" Easing="ElasticInOut" />
 		<Move Target="trBg" X="-150" Y="60" Duration="2" Easing="ElasticInOut" Delay="0.2" />
 		<Change tBg.Factor="1" Duration="2" Easing="ElasticInOut" Delay="0.3" />
