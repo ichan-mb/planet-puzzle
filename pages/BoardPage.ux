@@ -13,7 +13,7 @@
 		</Panel>
 		<Panel ux:Name="spacerBottom" Dock="Bottom" Height="20%" />
 		<Grid ux:Name="container" Rows="auto,1*,auto" Columns="1*" CellSpacing="8">
-			<StackPanel ux:Name="Header">
+			<StackPanel ux:Name="Header" ItemSpacing="3">
 				<Text ux:Name="AppName" Value="PlanetPuzzle" Font="PaytoneOne" FontSize="22" Color="White" />
 				<Text ux:Name="Desc" Value="Solve This Slide Puzzle.." Font="Montserrat" FontSize="14" Color="White" />
 				<Grid ux:Name="Stats" ColumnCount="3" RowCount="1" Height="30">
