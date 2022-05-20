@@ -72,7 +72,7 @@ export default class Puzzle {
         return false
     }
 
-    public countInversions(): number
+    private countInversions(): number
     {
         let count = 0;
         for (let i: number = 0; i < this.tiles.length; i++)
